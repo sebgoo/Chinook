@@ -16,7 +16,8 @@ Zdrojové dáta obsahujú tieto tabuľky:
 ### **1.1 ERD diagram**
 ERD diagram znázorňuje vzťahy medzi tabuľkami v zdrojovej databáze Chinook.
 
-![ERD Diagram](Chinook_ERD.png)
+
+![Chinook_ERD](https://github.com/user-attachments/assets/70be31b1-e720-4365-81d3-d0241f934d7b)
 
 ---
 ## **2. Dimenzionálny model**
