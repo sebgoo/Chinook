@@ -167,6 +167,6 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
 
 ---
 
-**Meno a priezvisko:** _Sebastián Vodička
-_
+**Autor:** Sebastián Vodička
+
 
