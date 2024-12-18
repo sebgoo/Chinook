@@ -167,5 +167,6 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
 
 ---
 
-**Meno a priezvisko:** _[Doplň svoje meno]_
+**Meno a priezvisko:** _Sebastián Vodička
+_
 
