@@ -114,6 +114,11 @@ DROP TABLE IF EXISTS chinook_stage.album;
 ---
 ## **4. Vizualizácia dát**
 Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých metrikách:
+![Snímka obrazovky (342)](https://github.com/user-attachments/assets/126b6956-2aad-44a2-95f3-364b2685f9a4)  ![Snímka obrazovky (344)](https://github.com/user-attachments/assets/c1e87f59-d264-43d7-8129-d0ca9b6133c1)
+
+
+
+
 
 1. **Top 10 najpredávanejších skladieb**:
    ```sql
