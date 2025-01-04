@@ -53,7 +53,8 @@ Pre tento projekt bol navrhnutý **hviezdicový model (star schema)**, ktorý za
 
 ### **2.1 Dimenzionálny model diagram**
 
-![Star Schema](star_model.png)
+![s](https://github.com/user-attachments/assets/d321d003-d528-43e3-8717-437172aa4d25)
+
 
 ---
 ## **3. ETL proces v Snowflake**
