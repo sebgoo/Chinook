@@ -114,7 +114,9 @@ DROP TABLE IF EXISTS chinook_stage.album;
 ---
 ## **4. Vizualizácia dát**
 Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých metrikách:
-![Snímka obrazovky (342)](https://github.com/user-attachments/assets/126b6956-2aad-44a2-95f3-364b2685f9a4)  ![Snímka obrazovky (344)](https://github.com/user-attachments/assets/c1e87f59-d264-43d7-8129-d0ca9b6133c1)
+![Snímka obrazovky (342)](https://github.com/user-attachments/assets/126b6956-2aad-44a2-95f3-364b2685f9a4)  ![Snímka obrazovky (344)](https://github.com/user-attachments/assets/c1e87f59-d264-43d7-8129-d0ca9b6133c1)![Snímka obrazovky (345)](https://github.com/user-attachments/assets/38c63574-8108-4117-8c44-8ec80ccc4fb4) ![Snímka obrazovky (346)](https://github.com/user-attachments/assets/5c2f7b18-3b11-47de-b4be-0957bef4d7cc)![Snímka obrazovky (347)](https://github.com/user-attachments/assets/c4b9a7c5-0fdf-4249-a0b8-0de385aea22e)![Snímka obrazovky (348)](https://github.com/user-attachments/assets/07e557d5-b853-425e-9155-681025b032ea)
+
+
 
 
 
