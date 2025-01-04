@@ -12,9 +12,9 @@ Zdrojové dáta obsahujú tieto tabuľky:
 - **Invoice**: Faktúry vytvorené zákazníkmi.
 - **InvoiceLine**: Položky z faktúr.
 - **Employee**: Zamestnanci poskytujúci podporu zákazníkom.
-- **Playlist**:
-- **PlaylistTrack**:
-- **MediaType**:
+- **Playlist**: Obsahuje zoznamy skladieb vytvorené zákazníkmi
+- **PlaylistTrack**: Prepája skladby a playlisty
+- **MediaType**: Typ médií pre skladby, napr. MP3, WAV
 ### **1.1 ERD diagram**
 ERD diagram znázorňuje vzťahy medzi tabuľkami v zdrojovej databáze Chinook.
 
