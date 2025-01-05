@@ -64,14 +64,32 @@ Pre tento projekt bol navrhnutý **hviezdicový model (star schema)**, ktorý za
 ETL proces je rozdelený do troch hlavných krokov: **Extract**, **Transform** a **Load**.
 
 ### **3.1 Extrahovanie dát (Extract)**
-Dáta boli extrahované z relačnej databázy Chinook a uložené do Snowflake pomocou **stage**. Načítanie dát do Snowflake prebiehalo cez:
+Dáta boli extrahované z SQL skriptu, ktorý obsahoval definície a dáta pre tabuľky databázy Chinook. Postup extrahovania bol nasledovný:
+
+Načítanie SQL skriptu:
+SQL skript, obsahujúci štruktúru databázy Chinook a vzorové dáta, bol otvorený v textovom editore alebo IDE.
+
+Kopírovanie dát:
+Dátové sekcie (príkazy INSERT INTO) obsahujúce záznamy boli manuálne extrahované (skopírované).
+
+Import do Snowflake:
+Dáta boli prilepené a spustené priamo v Snowflake konzole. Každá tabuľka bola nahratá samostatne, pričom sa postupovalo podľa nasledujúceho príkladu:
 
 ```sql
-CREATE OR REPLACE STAGE chinook_stage;
-COPY INTO chinook.artist
-FROM @chinook_stage/artist.csv
-FILE_FORMAT = (TYPE = 'CSV' FIELD_OPTIONALLY_ENCLOSED_BY = '"' SKIP_HEADER = 1);
+  CREATE OR REPLACE TABLE `artist` (
+      `ArtistId` INT,
+      `Name` VARCHAR
+  );
+
+  INSERT INTO `artist` (`ArtistId`, `Name`)
+  VALUES 
+    (1, 'AC/DC'),
+    (2, 'Accept'),
+    (3, 'Aerosmith'),
+    ...
 ```
+Tento proces bol zopakovaný pre všetky tabuľky databázy Chinook.
+
 
 ### **3.2 Transformácia dát (Transform)**
 Transformácie zahŕňali vytvorenie dimenzií a faktovej tabuľky.
