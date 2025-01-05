@@ -125,8 +125,17 @@ Transformácie zahŕňali vytvorenie dimenzií a faktovej tabuľky.
 Transformované tabuľky boli načítané do Snowflake a staging tabuľky odstránené pre optimalizáciu:
 
 ```sql
-DROP TABLE IF EXISTS `artist`;
-DROP TABLE IF EXISTS `album`;
+DROP TABLE IF EXISTS Customer_staging;
+DROP TABLE IF EXISTS Track_staging;
+DROP TABLE IF EXISTS InvoiceLine_staging;
+DROP TABLE IF EXISTS Album_staging;
+DROP TABLE IF EXISTS Playlist_staging;
+DROP TABLE IF EXISTS Employee_staging;
+DROP TABLE IF EXISTS MediaType_staging;
+DROP TABLE IF EXISTS Invoice_staging;
+DROP TABLE IF EXISTS Genre_staging;
+DROP TABLE IF EXISTS Artist_staging;
+DROP TABLE IF EXISTS PlaylistTrack_staging;
 ```
 
 ---
