@@ -243,6 +243,6 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
 
 
 
-- **Autor:** Sebastián Vodička
+## Autor: Sebastián Vodička
 
 
