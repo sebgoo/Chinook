@@ -79,28 +79,28 @@ Transformácie zahŕňali vytvorenie dimenzií a faktovej tabuľky.
 - **Vytvorenie dimenzií:**
    ```sql
    CREATE OR REPLACE TABLE dim_artist AS
-   SELECT ArtistId, Name
-   FROM chinook.artist;
-   
+   SELECT `ArtistId`, `Name`
+   FROM `artist`;
+
    CREATE OR REPLACE TABLE dim_album AS
-   SELECT AlbumId, Title, ArtistId
-   FROM chinook.album;
+   SELECT `AlbumId`, `Title`, `ArtistId`
+   FROM `album`;
    ```
 
 - **Vytvorenie faktovej tabuľky:**
    ```sql
    CREATE OR REPLACE TABLE fact_invoice_line AS
    SELECT 
-       il.InvoiceLineId, 
-       il.InvoiceId, 
-       il.TrackId, 
-       il.UnitPrice, 
-       il.Quantity, 
-       il.UnitPrice * il.Quantity AS TotalAmount,
-       i.InvoiceDate, 
-       i.CustomerId
-   FROM chinook.invoiceline il
-   JOIN chinook.invoice i ON il.InvoiceId = i.InvoiceId;
+     il.`InvoiceLineId`, 
+     il.`InvoiceId`, 
+     il.`TrackId`, 
+     il.`UnitPrice`, 
+     il.`Quantity`, 
+     il.`UnitPrice` * il.`Quantity` AS TotalAmount,
+     i.`InvoiceDate`, 
+     i.`CustomerId`
+   FROM `invoiceline` il
+   JOIN `invoice` i ON il.`InvoiceId` = i.`InvoiceId`;
    ```
 
 ### **3.3 Načítanie dát (Load)**
