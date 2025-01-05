@@ -241,8 +241,8 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
       EXTRACT(DOW FROM i.`InvoiceDate`);
   ```
 
+---
 
-##
-- **Autor**: Sebastián Vodička
+**Autor:** Sebastián Vodička
 
 
