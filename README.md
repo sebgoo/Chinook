@@ -220,9 +220,9 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
       Revenue DESC;
    ```
 6. **Celková aktivita počas týždňa**:
-  ```sql
-   SELECT 
-    CASE 
+   ```sql
+    SELECT 
+     CASE 
         WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 0 THEN 'Sunday'
         WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 1 THEN 'Monday'
         WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 2 THEN 'Tuesday'
@@ -230,22 +230,16 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
         WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 4 THEN 'Thursday'
         WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 5 THEN 'Friday'
         WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 6 THEN 'Saturday'
-    END AS DayOfWeek,
-    COUNT(i.`InvoiceId`) AS TotalInvoices,
-    SUM(i.`Total`) AS TotalRevenue
-   FROM 
-    `Invoice` i
-   GROUP BY 
-    EXTRACT(DOW FROM i.`InvoiceDate`)
-   ORDER BY 
-    EXTRACT(DOW FROM i.`InvoiceDate`);
- ```
-
----
-## **Formát odovzdania**
-- **README.md** obsahuje kompletnú dokumentáciu k projektu.
-- **SQL skripty**: ETL proces (Extract, Transform, Load).
-- **GitHub repozitár** s pravidelnými a popisnými commitmi.
+     END AS DayOfWeek,
+     COUNT(i.`InvoiceId`) AS TotalInvoices,
+      SUM(i.`Total`) AS TotalRevenue
+     FROM 
+      `Invoice` i
+     GROUP BY 
+      EXTRACT(DOW FROM i.`InvoiceDate`)
+     ORDER BY 
+      EXTRACT(DOW FROM i.`InvoiceDate`);
+  ```
 
 ---
 
