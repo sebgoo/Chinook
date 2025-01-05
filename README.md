@@ -141,6 +141,7 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
 
 
 1. **Top 10 najpredávanejších skladieb**:
+   Dotaz identifikuje skladby s najvyšším počtom predaných jednotiek.
    ```sql
     SELECT 
       t.`Name` AS TrackName,
@@ -157,6 +158,7 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    ```
 
 2. **Tržby podľa žánrov**:
+   Analýza tržieb podľa hudobných žánrov na identifikáciu najvýnosnejších štýlov.
    ```sql
     SELECT 
       g.`Name` AS Genre,
@@ -174,6 +176,7 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    ```
 
 3. **Tržby podľa krajín zákazníkov**:
+   Prehľad tržieb na základe krajiny zákazníkov, čo môže pomôcť pri geografickej optimalizácii predajov.
    ```sql
     SELECT 
       c.`Country`,
@@ -189,6 +192,7 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    ```
 
 4. **Počet skladieb na albumoch**:
+   Dotaz ukazuje, ktoré albumy obsahujú najviac skladieb.
    ```sql
     SELECT 
       a.`Title` AS AlbumTitle,
@@ -204,6 +208,7 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    ```
 
 5. **Tržby podľa zamestnancov**:
+   Analýza príspevku zamestnancov na celkových tržbách.
    ```sql
     SELECT 
       e.`FirstName` || ' ' || e.`LastName` AS EmployeeName,
@@ -220,6 +225,7 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
       Revenue DESC;
    ```
 6. **Celková aktivita počas týždňa**:
+   Ukazuje celkovú aktivitu počas jednotlivých dnoch týždna uživateľov.
    ```sql
     SELECT 
      CASE 
