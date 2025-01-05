@@ -107,8 +107,8 @@ Transformácie zahŕňali vytvorenie dimenzií a faktovej tabuľky.
 Transformované tabuľky boli načítané do Snowflake a staging tabuľky odstránené pre optimalizáciu:
 
 ```sql
-DROP TABLE IF EXISTS chinook_stage.artist;
-DROP TABLE IF EXISTS chinook_stage.album;
+DROP TABLE IF EXISTS `artist`;
+DROP TABLE IF EXISTS `album`;
 ```
 
 ---
