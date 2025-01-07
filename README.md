@@ -151,7 +151,7 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
 
 
 1. **Top 10 najpredávanejších skladieb**:
-   Dotaz identifikuje skladby s najvyšším počtom predaných jednotiek.
+   Dotaz identifikuje skladby s najvyšším počtom predaných jednotiek.Z tohto grafu vyplýva že sú 3 najpredávanejšie skladby s rovnakým počtom predaní.
    ```sql
     SELECT 
       t.`Name` AS TrackName,
@@ -168,7 +168,7 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    ```
 
 2. **Tržby podľa žánrov**:
-   Analýza tržieb podľa hudobných žánrov na identifikáciu najvýnosnejších štýlov.
+   Analýza tržieb podľa hudobných žánrov na identifikáciu najvýnosnejších štýlov. Z grafu vyplýva že najväčšiu tržbu urobil žaner Rock a to až o viac ako 100% v porovnaní so žánrom Latin ktoré bolo na druhom mieste.
    ```sql
     SELECT 
       g.`Name` AS Genre,
@@ -186,7 +186,7 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    ```
 
 3. **Tržby podľa krajín zákazníkov**:
-   Prehľad tržieb na základe krajiny zákazníkov, čo môže pomôcť pri geografickej optimalizácii predajov.
+   Prehľad tržieb na základe krajiny zákazníkov, čo môže pomôcť pri geografickej optimalizácii predajov. Z grafu vyplýva že najväčšiu tržbu mala krajina USA a to s tržbou 523.Na druhom mieste je Canada a hned za ním je Francúzsko.
    ```sql
     SELECT 
       c.`Country`,
@@ -202,7 +202,7 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    ```
 
 4. **Počet skladieb na albumoch**:
-   Dotaz ukazuje, ktoré albumy obsahujú najviac skladieb.
+   Dotaz ukazuje, ktoré albumy obsahujú najviac skladieb. Z 341 albumov najviac skladieb obsahuje album o Sol a to s počtom trackov 57.
    ```sql
     SELECT 
       a.`Title` AS AlbumTitle,
@@ -235,7 +235,7 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
       Revenue DESC;
    ```
 6. **Celková aktivita počas týždňa**:
-   Ukazuje celkovú aktivitu počas jednotlivých dnoch týždna uživateľov.
+   Ukazuje celkovú aktivitu počas jednotlivých dnoch týždna uživateľov. Z grafu vyplýva že najväčšia aktivita počas týždna je v pondelok.
    ```sql
     SELECT 
      CASE 
