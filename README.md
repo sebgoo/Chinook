@@ -55,7 +55,8 @@ Pre tento projekt bol navrhnutý **hviezdicový model (star schema)**, ktorý za
 
 ### **2.1 Dimenzionálny model diagram**
 
-![s](https://github.com/user-attachments/assets/d321d003-d528-43e3-8717-437172aa4d25)
+![Star_schema](https://github.com/user-attachments/assets/d4606187-e909-4ae9-a271-dde12289dd08)
+
 
 
 ---
@@ -141,7 +142,7 @@ DROP TABLE IF EXISTS PlaylistTrack_staging;
 ---
 ## **4. Vizualizácia dát**
 Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých metrikách:
-![Snímka obrazovky (342)](https://github.com/user-attachments/assets/126b6956-2aad-44a2-95f3-364b2685f9a4)  ![Snímka obrazovky (344)](https://github.com/user-attachments/assets/c1e87f59-d264-43d7-8129-d0ca9b6133c1)! ![Snímka obrazovky (349)](https://github.com/user-attachments/assets/42c5c6a0-d38e-4014-9055-5be8397b6539)![Snímka obrazovky (346)](https://github.com/user-attachments/assets/5c2f7b18-3b11-47de-b4be-0957bef4d7cc)![Snímka obrazovky (347)](https://github.com/user-attachments/assets/c4b9a7c5-0fdf-4249-a0b8-0de385aea22e)![Snímka obrazovky (348)](https://github.com/user-attachments/assets/07e557d5-b853-425e-9155-681025b032ea)
+[Snímka obrazovky (342)](https://github.com/user-attachments/assets/126b6956-2aad-44a2-95f3-364b2685f9a4)  [Snímka obrazovky (344)](https://github.com/user-attachments/assets/c1e87f59-d264-43d7-8129-d0ca9b6133c1)  [Snímka obrazovky (349)](https://github.com/user-attachments/assets/42c5c6a0-d38e-4014-9055-5be8397b6539) [Snímka obrazovky (346)](https://github.com/user-attachments/assets/5c2f7b18-3b11-47de-b4be-0957bef4d7cc) [Snímka obrazovky (347)](https://github.com/user-attachments/assets/c4b9a7c5-0fdf-4249-a0b8-0de385aea22e) [Snímka obrazovky (348)](https://github.com/user-attachments/assets/07e557d5-b853-425e-9155-681025b032ea)
 
 
 
