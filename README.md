@@ -25,7 +25,7 @@ ERD diagram znázorňuje vzťahy medzi tabuľkami v zdrojovej databáze Chinook.
 ## **2. Dimenzionálny model**
 Pre tento projekt bol navrhnutý **hviezdicový model (star schema)**, ktorý zahŕňa jednu faktovú tabuľku a niekoľko dimenzií:
 
-### **Faktová tabuľka: `fact_invoice_line`**
+### **Faktová tabuľka: `fact_sales`**
 | Stĺpec         | Popis                       |
 |------------------|----------------------------|
 | InvoiceLineId    | Primárny kľúč.           |
