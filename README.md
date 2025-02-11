@@ -38,19 +38,19 @@ Pre tento projekt bol navrhnutý **hviezdicový model (star schema)**, ktorý za
 | CustomerId       | ID zákazníka.            |
 
 ### **Dimenzie**
-- **`dim_artist`**: Informácie o interpretoch.
+- **dim_artist**: Informácie o interpretoch.
   - Atribúty: `ArtistId`, `Name`
-- **`dim_album`**: Informácie o albumoch.
+- **dim_album**: Informácie o albumoch.
   - Atribúty: `AlbumId`, `Title`, `ArtistId`
-- **`dim_track`**: Detaily o skladbách.
+- **dim_track**: Detaily o skladbách.
   - Atribúty: `TrackId`, `Name`, `AlbumId`, `GenreId`, `UnitPrice`
-- **`dim_genre`**: Informácie o žánroch.
+- **dim_genre**: Informácie o žánroch.
   - Atribúty: `GenreId`, `Name`
-- **`dim_customer`**: Zákazníci.
+- **dim_customer**: Zákazníci.
   - Atribúty: `CustomerId`, `FirstName`, `LastName`, `Country`
-- **`dim_invoice`**: Informácie o faktúrach.
+- **dim_invoice**: Informácie o faktúrach.
   - Atribúty: `InvoiceId`, `InvoiceDate`, `BillingCountry`
-- **`dim_employee`**: Informácie o zamestnancoch.
+- **dim_employee**: Informácie o zamestnancoch.
   - Atribúty: `EmployeeId`, `FirstName`, `LastName`
 
 ### **2.1 Dimenzionálny model diagram**
@@ -77,12 +77,12 @@ Import do Snowflake:
 Dáta boli prilepené a spustené priamo v Snowflake konzole. Každá tabuľka bola nahratá samostatne, pričom sa postupovalo podľa nasledujúceho príkladu:
 
 ```sql
-  CREATE OR REPLACE TABLE `artist` (
-      `ArtistId` INT,
-      `Name` VARCHAR
+  CREATE OR REPLACE TABLE artist (
+      ArtistId INT,
+      Name VARCHAR
   );
 
-  INSERT INTO `artist` (`ArtistId`, `Name`)
+  INSERT INTO artist (ArtistId, Name)
   VALUES 
     (1, 'AC/DC'),
     (2, 'Accept'),
@@ -98,28 +98,28 @@ Transformácie zahŕňali vytvorenie dimenzií a faktovej tabuľky.
 - **Vytvorenie dimenzií:**
    ```sql
    CREATE OR REPLACE TABLE dim_artist AS
-   SELECT `ArtistId`, `Name`
-   FROM `artist`;
+   SELECT ArtistId, Name
+   FROM artist;
 
    CREATE OR REPLACE TABLE dim_album AS
-   SELECT `AlbumId`, `Title`, `ArtistId`
-   FROM `album`;
+   SELECT AlbumId, Title, ArtistId
+   FROM album;
    ```
 
 - **Vytvorenie faktovej tabuľky:**
    ```sql
    CREATE OR REPLACE TABLE fact_invoice_line AS
    SELECT 
-     il.`InvoiceLineId`, 
-     il.`InvoiceId`, 
-     il.`TrackId`, 
-     il.`UnitPrice`, 
-     il.`Quantity`, 
-     il.`UnitPrice` * il.`Quantity` AS TotalAmount,
-     i.`InvoiceDate`, 
-     i.`CustomerId`
-   FROM `invoiceline` il
-   JOIN `invoice` i ON il.`InvoiceId` = i.`InvoiceId`;
+     il.InvoiceLineId, 
+     il.InvoiceId, 
+     il.TrackId, 
+     il.UnitPrice, 
+     il.Quantity, 
+     il.UnitPrice * il.Quantity AS TotalAmount,
+     i.InvoiceDate, 
+     i.CustomerId
+   FROM invoiceline il
+   JOIN invoice i ON il.InvoiceId = i.InvoiceId;
    ```
 
 ### **3.3 Načítanie dát (Load)**
@@ -154,14 +154,14 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    Dotaz identifikuje skladby s najvyšším počtom predaných jednotiek.Z tohto grafu vyplýva že sú 3 najpredávanejšie skladby s rovnakým počtom predaní.
    ```sql
     SELECT 
-      t.`Name` AS TrackName,
-      COUNT(il.`Quantity`) AS TotalSales
+      t.Name AS TrackName,
+      COUNT(il.Quantity) AS TotalSales
     FROM 
-      `InvoiceLine` il
+      InvoiceLine il
     JOIN 
-      `Track` t ON il.`TrackId` = t.`TrackId`
+      Track t ON il.TrackId = t.TrackId
     GROUP BY 
-      t.`Name`
+      t.Name
     ORDER BY 
       TotalSales DESC
     LIMIT 10;
@@ -171,16 +171,16 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    Analýza tržieb podľa hudobných žánrov na identifikáciu najvýnosnejších štýlov. Z grafu vyplýva že najväčšiu tržbu urobil žaner Rock a to až o viac ako 100% v porovnaní so žánrom Latin ktoré bolo na druhom mieste.
    ```sql
     SELECT 
-      g.`Name` AS Genre,
-      SUM(il.`UnitPrice` * il.`Quantity`) AS Revenue
+      g.Name AS Genre,
+      SUM(il.UnitPrice * il.Quantity) AS Revenue
     FROM 
-      `InvoiceLine` il
+      InvoiceLine il
     JOIN 
-      `Track` t ON il.`TrackId` = t.`TrackId`
+      Track t ON il.TrackId = t.TrackId
     JOIN 
-      `Genre` g ON t.`GenreId` = g.`GenreId`
+      Genre g ON t.GenreId = g.GenreId
     GROUP BY 
-      g.`Name`
+      g.Name
     ORDER BY 
       Revenue DESC;
    ```
@@ -189,14 +189,14 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    Prehľad tržieb na základe krajiny zákazníkov, čo môže pomôcť pri geografickej optimalizácii predajov. Z grafu vyplýva že najväčšiu tržbu mala krajina USA a to s tržbou 523.Na druhom mieste je Canada a hned za ním je Francúzsko.
    ```sql
     SELECT 
-      c.`Country`,
-      SUM(i.`Total`) AS Revenue
+      c.Country,
+      SUM(i.Total) AS Revenue
     FROM 
-      `Invoice` i
+      Invoice i
     JOIN 
-      `Customer` c ON i.`CustomerId` = c.`CustomerId`
+      Customer c ON i.CustomerId = c.CustomerId
     GROUP BY 
-      c.`Country`
+      c.Country
     ORDER BY 
       Revenue DESC;
    ```
@@ -205,14 +205,14 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    Dotaz ukazuje, ktoré albumy obsahujú najviac skladieb. Z 341 albumov najviac skladieb obsahuje album o Sol a to s počtom trackov 57.
    ```sql
     SELECT 
-      a.`Title` AS AlbumTitle,
-      COUNT(t.`TrackId`) AS NumberOfTracks
+      a.Title AS AlbumTitle,
+      COUNT(t.TrackId) AS NumberOfTracks
     FROM 
-      `Album` a
+      Album a
     JOIN 
-      `Track` t ON a.`AlbumId` = t.`AlbumId`
+      Track t ON a.AlbumId = t.AlbumId
     GROUP BY 
-      a.`Title`
+      a.Title
     ORDER BY 
       NumberOfTracks DESC;
    ```
@@ -221,14 +221,14 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    Analýza príspevku zamestnancov na celkových tržbách.
    ```sql
     SELECT 
-      e.`FirstName` || ' ' || e.`LastName` AS EmployeeName,
-      SUM(i.`Total`) AS Revenue
+      e.FirstName || ' ' || e.LastName AS EmployeeName,
+      SUM(i.Total) AS Revenue
     FROM 
-      `Invoice` i
+      Invoice i
     JOIN 
-      `Customer` c ON i.`CustomerId` = c.`CustomerId`
+      Customer c ON i.CustomerId = c.CustomerId
     JOIN 
-      `Employee` e ON c.`SupportRepId` = e.`EmployeeId`
+      Employee e ON c.SupportRepId = e.EmployeeId
     GROUP BY 
       EmployeeName
     ORDER BY 
@@ -239,22 +239,22 @@ Navrhnutých bolo 5 vizualizácií, ktoré poskytujú prehľad o dôležitých m
    ```sql
     SELECT 
      CASE 
-        WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 0 THEN 'Sunday'
-        WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 1 THEN 'Monday'
-        WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 2 THEN 'Tuesday'
-        WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 3 THEN 'Wednesday'
-        WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 4 THEN 'Thursday'
-        WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 5 THEN 'Friday'
-        WHEN EXTRACT(DOW FROM i.`InvoiceDate`) = 6 THEN 'Saturday'
+        WHEN EXTRACT(DOW FROM i.InvoiceDate) = 0 THEN 'Sunday'
+        WHEN EXTRACT(DOW FROM i.InvoiceDate) = 1 THEN 'Monday'
+        WHEN EXTRACT(DOW FROM i.InvoiceDate) = 2 THEN 'Tuesday'
+        WHEN EXTRACT(DOW FROM i.InvoiceDate) = 3 THEN 'Wednesday'
+        WHEN EXTRACT(DOW FROM i.InvoiceDate) = 4 THEN 'Thursday'
+        WHEN EXTRACT(DOW FROM i.InvoiceDate) = 5 THEN 'Friday'
+        WHEN EXTRACT(DOW FROM i.InvoiceDate) = 6 THEN 'Saturday'
      END AS DayOfWeek,
-     COUNT(i.`InvoiceId`) AS TotalInvoices,
-      SUM(i.`Total`) AS TotalRevenue
+     COUNT(i.InvoiceId) AS TotalInvoices,
+      SUM(i.Total) AS TotalRevenue
      FROM 
-      `Invoice` i
+      Invoice i
      GROUP BY 
-      EXTRACT(DOW FROM i.`InvoiceDate`)
+      EXTRACT(DOW FROM i.InvoiceDate)
      ORDER BY 
-      EXTRACT(DOW FROM i.`InvoiceDate`);
+      EXTRACT(DOW FROM i.InvoiceDate);
   ```
 
   
