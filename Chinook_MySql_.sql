@@ -352,5 +352,5 @@ GROUP BY
     EXTRACT(DOW FROM i.InvoiceDate)
 ORDER BY 
     EXTRACT(DOW FROM i.InvoiceDate);
-
+ 
 
